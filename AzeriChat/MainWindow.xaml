@@ -1,0 +1,80 @@
+﻿<Window x:Class="AzeriChat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AzeriChat"
+        mc:Ignorable="d"
+        Title="Talk To Me" Height="600" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+    <Grid Grid.Row="0" Background="CornflowerBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border Width="50" Height="50" CornerRadius="30" Background="#fc8803" Margin="15 0 0 0">
+                    <Label Content="AI" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           Foreground="White" FontSize="18" Margin="2 0 0 0"/>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Content="Amin Ibrahimov" Foreground="White" Margin="10 5 0 0" HorizontalContentAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Content="online"  Name="accesslbl" Foreground="#03fc0f" Margin="10 0 0 0"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Image Source="Resources/158475-pic-bubble-chat-icon-png-image-high-quality.png"
+                       Margin="5 5 0 5"
+                      Width="40" />
+            </Grid>
+    </Grid>
+        <Grid Grid.Row="1" Background="#c4c3c2">
+            <ListView x:Name="listview" ItemsSource="{Binding messages}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label FontSize="15" Grid.Column="0" Content="{Binding Text}"/>
+                                <Label FontSize="7" Grid.Column="1" Content="{Binding Date}"/>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBox Text="Tap for writing..." Name="textbox" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
+                      Padding="15 0 0 0 "    FontSize="16" MouseEnter="EnterMe" MouseLeave="LeaveMe" MouseDoubleClick="DoubleClickMe" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <Button Background="White" Click="SendClick">
+                    <Image Source="Resources/telegram.png" Width="50"/>
+                    
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
